@@ -85,9 +85,8 @@ function dropToken(column, row, player) {
         // console.log(board[2]);
     }
     console.log("board: " + board[column][row])
-    if (!(board[column][row] === 0)) {
-        console.log("errdfasdfdfor")
-        return;
+    if (checkAllowed(column,row) === false) {
+        return
     }
     value = player.token;
 
@@ -107,6 +106,10 @@ function dropToken(column, row, player) {
     return board, generateBoardDOM(board), play()  
 }
 
+function checkAllowed(column, row) {
+    if (!(board[column][row] === 0))
+        return false
+}
 
 
 
@@ -131,25 +134,25 @@ function checkWin(player) {
     console.log(player.name)
     console.log(player.token)
     if ((board[0][0] === player.token && board[0][1] === player.token && board[0][2] === player.token) ) {
-        return(player.name + " WIN")
+        return(console.log(player.name + " WIN"))
     }
     else if ((board[1][0] === player.token && board[1][1] === player.token && board[1][2] === player.token )){
-        return(player.name + "WON!!")
+        return(console.log(player.name + "WON!!"))
     }
     else if ((board[2][0] === player.token && board[2][1] === player.token && board[2][2] === player.token )){
-        return(player.name + "WON!!")
+        return(console.log(player.name + "WON!!"))
     }
     else if ((board[0][1] === player.token && board[1][1] === player.token && board[2][1] === player.token )){
-        return(player.name + "WON!!")
+        return(console.log(player.name + "WON!!"))
     }
     else if ((board[0][2] === player.token && board[1][2] === player.token && board[2][2] === player.token )){
-        return(player.name + "WON!!")
+        return(console.log(player.name + "WON!!"))
     }
     else if ((board[0][0] === player.token && board[1][1] === player.token && board[2][2] === player.token )){
-        return(player.name + "WON!!")
+        return(console.log(player.name + "WON!!"))
     }
     else if ((board[2][0] === player.token && board[1][1] === player.token && board[0][2] === player.token )){
-        return(player.name + "WON!!")
+        return(console.log(player.name + "WON!!"))
     }
     else return
     }
